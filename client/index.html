@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css" media="screen" title="no title">
+    <script type="text/javascript" src="./vendor/axios.js">
+
+    </script>
+</head>
+<body>
+  <input type="button" name="name" value="get" id="btn">
+  <div class="result">
+
+  </div>
+</body>
+<script type="text/javascript">
+  document.getElementById('btn').onclick = function(){
+    axios.get('/index').then(function(res){
+      document.querySelector('.result').innerHTML = res.data.path;
+    })
+  }
+</script>
+</html>
