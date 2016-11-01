@@ -1,0 +1,33 @@
+@import "normalize";
+
+body{
+  background-color:#DDDDDD;
+  font-family: "微软雅黑";
+}
+
+a{
+  text-decoration: none;
+}
+h1,h2,h3,h4,h5,h6{
+  margin:0;
+  padding:0;
+  font-weight: normal;
+}
+
+// 垂直居中的样式
+@mixin center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// 清除浮动的样式
+.clearfix:after{
+  content:'';
+  display: table;
+  width: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}

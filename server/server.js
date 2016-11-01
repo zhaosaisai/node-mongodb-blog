@@ -7,13 +7,6 @@ const route = require('./routes/route.js');
 //引入配置文件
 const config = require('../config.json');
 
-//作路径的映射
-const pathmap = {
-  'css':'css',
-  'html':'pages'
-}
-
-
 // 创建http服务器
 const server = http.createServer((req, res) => {
   // console.log(req.method);
@@ -21,10 +14,8 @@ const server = http.createServer((req, res) => {
   let pathname = url.parse(req.url).pathname;
   // 设置default文件
   pathname = pathname === '/' ? '/index.html' : pathname;
-  console.log(pathname);
   // 拼接出实际的需要返回的路径
   let pagepath = path.join(__dirname, '../client/', pathname);
-  console.log(pagepath);
   // 获取文件的后缀  为了区分接口和路径不能直接这样设置后缀  规定带有后缀的请求 视为page的直接请求 不带路径的请求视为接口的请求
 
   // let extname = path.extname(pagepath) ? path.extname(pagepath).slice(1) : 'default';
@@ -39,14 +30,16 @@ const server = http.createServer((req, res) => {
     page(res,pagepath,extname);
   }else{
     // 如果无后缀--接口请求
-    console.log(1);
     let pathes = pathname.slice(1);
     let method = req.method.toLocaleLowerCase();
-    route[method].call(res, pathes);
+    if(method === 'get'){
+      //get方式的请求
+      route.get.call(res, pathes);
+    }else{
+      //默认的就是post方式的请求
+      route.post.call(res, req, pathes);
+    }
   }
-
-  // 然后判断需要读取的文件是否存在
-
 })
 
 server.listen(config.server.port, () => {

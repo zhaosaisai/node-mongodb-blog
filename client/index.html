@@ -3,23 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
-    <title>Document</title>
+    <title>seeyou404</title>
     <link rel="stylesheet" href="./css/index.css" media="screen" title="no title">
-    <script type="text/javascript" src="./vendor/axios.js">
-
-    </script>
 </head>
 <body>
-  <input type="button" name="name" value="get" id="btn">
-  <div class="result">
-
+  <!-- header部分 -->
+  <div id="header">
+    <div class="self">
+      <span class="name">Seeyou404</span>
+      <a href="https://github.com/" title="seeyou404" class="github">Github</a>
+    </div>
+  </div>
+  <!-- 主题内容部分 -->
+  <div id="container" class="clearfix">
+    <!-- 左面的内容展示部分 -->
+    <div id="content">
+      <div class="items">
+        <h3 class="item-title"><a href="#">Pacman主题介绍</a></h3>
+        <div class="item-content">
+          Pacman是一款为Hexo打造的一款扁平化，有着响应式设计的主题。本站为该主题设计的演示站点，同时你也可以访问我的博客查看效果。主题的源码托管在
+          github上，欢迎fork。遇到任何问题或者意见请发表issue。
+        </div>
+        <h6 class="item-time">2014年1月8日</h6>
+      </div>
+    </div>
+    <!-- 右面的一些列表展示部分 -->
+    <div id="category">2222222</div>
   </div>
 </body>
-<script type="text/javascript">
-  document.getElementById('btn').onclick = function(){
-    axios.get('/index').then(function(res){
-      document.querySelector('.result').innerHTML = res.data.path;
-    })
-  }
-</script>
+<script type="text/javascript" src="./js/index.js"></script>
 </html>

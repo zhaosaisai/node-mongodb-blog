@@ -1,0 +1,81 @@
+@import "common";
+
+#header{
+  width:100%;
+  height:200px;
+  background-color:#EA6753;
+  position: relative;
+  box-shadow: 0 0 5px #aaa;
+  #header{
+    width:100%;
+    height:200px;
+    background-color:#EA6753;
+  }
+  .self{
+    width:300px;
+    height:80px;
+    text-align: center;
+    @include center;
+    span,a{
+      display: block;
+      line-height:50px;
+    }
+    .name{
+      color:#fff;
+      font-size:32px;
+    }
+    .github{
+      color:#ddd;
+      transition: color .5s linear;
+      &:hover{
+        color:#fff;
+      }
+    }
+  }
+}
+
+// 主题部分的样式
+#container{
+  width:1500px;
+  margin:30px auto;
+  #content{
+     width:1120px;
+     float: left;
+     background:#ccc;
+     .items{
+       padding:20px 20px 20px 10px;
+       box-sizing: border-box;
+       background-color:#fff;
+       border-left:solid 10px #bcbcbc;
+       margin-bottom:2px;
+      .item-title{
+        font-size:26px;
+        margin-bottom:10px;
+        a{
+          color:#2CA6CB;
+          display: block;
+          transition: all .3s linear;
+          &:hover{
+            text-indent: 0.5em;
+            color:#3cbaff;
+          }
+        }
+      }
+      .item-content{
+        color:#8B8383;
+        line-height:30px;
+      }
+      .item-time{
+        font-size:14px;
+        color:#8B8383;
+        margin-top:10px;
+      }
+     }
+  }
+  #category{
+    width:340px;
+    float: right;
+    background:#fff;
+    height:500px;
+  }
+}
