@@ -1,0 +1,36 @@
+@import "common";
+
+.articles{
+  width:998px;
+  margin:30px auto;
+  background-color: #fff;
+  box-sizing: border-box;
+  padding:20px;
+  .title,.content{
+    border-bottom: solid 1px #2CA6CB;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
+  .title{
+    color:#2CA6CB;
+    font-size:26px;
+    cursor: default;
+    transition: all .3s linear;
+    position: relative;
+    &:hover{
+      text-indent: 1em;
+      color: #3cbaff;
+    }
+    .time{
+      position: absolute;
+      right: 0;
+      bottom: 10px;
+      font-size:14px;
+    }
+  }
+  .content{
+    line-height: 30px;
+    text-indent: 2em;
+    font-size:16px;
+  }
+}

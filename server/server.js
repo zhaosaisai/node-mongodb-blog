@@ -34,7 +34,7 @@ const server = http.createServer((req, res) => {
     let method = req.method.toLocaleLowerCase();
     if(method === 'get'){
       //get方式的请求
-      route.get.call(res, pathes);
+      route.get.call(res,req, pathes);
     }else{
       //默认的就是post方式的请求
       route.post.call(res, req, pathes);

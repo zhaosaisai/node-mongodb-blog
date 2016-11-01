@@ -54,19 +54,16 @@
 
 	var _utils = __webpack_require__(5);
 
-	var util = _interopRequireWildcard(_utils);
-
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	//首先进行首页请求获取到数据
-	_axios2.default.get('/list').then(function (value) {
-	  // console.log(typeof JSON.parse(value.data.listItems));
-	  //获取到数据之后进行数据的渲染
-	  util.$('#content').innerHTML = (0, _render.renderList)(JSON.parse(value.data.listItems)).join('');
-	}).catch(function (err) {
-	  console.log('the error happening ' + err);
+	var articleId = (0, _utils.getId)().id;
+
+	_axios2.default.get('/article', {
+	  params: {
+	    id: articleId
+	  }
+	}).then(function (value) {
+	  (0, _utils.$)('.articles').innerHTML = (0, _render.renderArticle)(JSON.parse(value.data.articlesContents));
 	});
 
 /***/ },

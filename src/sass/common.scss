@@ -31,3 +31,39 @@ h1,h2,h3,h4,h5,h6{
   clear: both;
   visibility: hidden;
 }
+
+
+
+#header{
+  width:100%;
+  height:200px;
+  background-color:#EA6753;
+  position: relative;
+  box-shadow: 0 0 5px #aaa;
+  #header{
+    width:100%;
+    height:200px;
+    background-color:#EA6753;
+  }
+  .self{
+    width:300px;
+    height:80px;
+    text-align: center;
+    @include center;
+    span,a{
+      display: block;
+      line-height:50px;
+    }
+    .name{
+      color:#fff;
+      font-size:32px;
+    }
+    .github{
+      color:#ddd;
+      transition: color .5s linear;
+      &:hover{
+        color:#fff;
+      }
+    }
+  }
+}
