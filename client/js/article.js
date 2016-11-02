@@ -64,6 +64,8 @@
 	  }
 	}).then(function (value) {
 	  (0, _utils.$)('.articles').innerHTML = (0, _render.renderArticle)(JSON.parse(value.data.articlesContents));
+	}).then(function () {
+	  hljs.initHighlightingOnLoad();
 	});
 
 /***/ },
@@ -1782,6 +1784,7 @@
 	});
 	exports.renderList = renderList;
 	exports.renderArticle = renderArticle;
+	exports.renderTitle = renderTitle;
 
 	var _utils = __webpack_require__(5);
 
@@ -1794,6 +1797,12 @@
 
 	function renderArticle(data) {
 	  return '<h2 class="title">\n            <span>' + data.title + '</span>\n            <span class="time">' + (0, _utils.formatDate)(new Date(data.time)) + '</span>\n          </h2>\n          <div class="content">\n            ' + data.content + '\n          </div>\n          ';
+	}
+
+	function renderTitle(data) {
+	  return data.map(function (obj, index) {
+	    return '<li>\n            <span class="index">' + (index + 1) + '</span>\n            <a href="/articles.html?id=' + obj._id + '"  target="_blank">' + obj.title + '</a>\n            <input type="button" class="deleteArticle" name="name" value="\u5220\u9664" data-index="' + obj._id + '">\n          </li>\n          ';
+	  });
 	}
 
 /***/ },
@@ -1810,6 +1819,7 @@
 	exports.formatDate = formatDate;
 	exports.getId = getId;
 	exports.getRanLength = getRanLength;
+	exports.parseHTML = parseHTML;
 	function $(attr) {
 	  return document.querySelector(attr);
 	}
@@ -1840,6 +1850,12 @@
 
 	function getRanLength(str) {
 	  return str.substring(0, Math.round(Math.random() * 100 + 100));
+	}
+
+	function parseHTML(str) {
+	  var doc = document.implementation.createHTMLDocument(str);
+	  doc.body.innerHTML = str;
+	  return doc.body.children;
 	}
 
 /***/ }

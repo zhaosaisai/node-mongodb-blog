@@ -1,6 +1,7 @@
 const querystring = require('querystring');
 const url = require('url');
 const get = require('./get.js');
+const post = require('./post.js');
 // 这个方法主要是用于设置路由的
 const route = {
   get(req,pathes){
@@ -26,12 +27,28 @@ const route = {
     //post的请求 我们应该获取到它传送过来的数据
     let body = ""; //用于保存传送过来的数据
     switch(pathes){
-      case "add":
+      case "addArticle":
         req.on('data', (chunk) => {
           body += chunk;
         }).on('end', () => {
-          let bodyJson = querystring.parse(body);
-          this.end(JSON.stringify(bodyJson));
+          let bodyJson = JSON.parse(body);
+          post.addArticle(bodyJson).then((value) => {
+            this.writeHead(200,{'content-type':'application/json'});
+            this.write(JSON.stringify({'add':value}));
+            this.end();
+          })
+        })
+      break;
+      case "delete":
+        req.on('data', (chunk) => {
+          body += chunk;
+        }).on('end', () => {
+          let bodyJson = JSON.parse(body);
+          post.deleteArticle(bodyJson.id).then((value) => {
+            this.writeHead(200,{'content-type':'application/json'});
+            this.write(JSON.stringify({'delete':value}));
+            this.end();
+          })
         })
       break;
     }

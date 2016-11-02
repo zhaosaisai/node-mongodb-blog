@@ -60,11 +60,33 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	//首先进行首页请求获取到数据
+	//为所有的按钮设置删除事件
+	var addEvent = function addEvent(domList) {
+	  var i = 0,
+	      len = domList.length;
+	  for (; i < len; i++) {
+	    domList[i].addEventListener('click', function () {
+	      var _this = this;
+
+	      var id = this.dataset.index;
+	      _axios2.default.post('/delete', {
+	        id: id
+	      }).then(function (value) {
+	        if (value.data.delete && value.data.delete.n > 0) {
+	          util.$('.list').removeChild(_this.parentNode);
+	        } else {
+	          alert('删除失败');
+	        }
+	      });
+	    }, false);
+	  }
+	};
+
+	//获取到所有的列表
 	_axios2.default.get('/list').then(function (value) {
-	  // console.log(typeof JSON.parse(value.data.listItems));
-	  //获取到数据之后进行数据的渲染
-	  util.$('#content').innerHTML = (0, _render.renderList)(JSON.parse(value.data.listItems)).join('');
+	  util.$('.list').innerHTML = (0, _render.renderTitle)(JSON.parse(value.data.listItems)).join('');
+	  var allBtn = util.$all('.deleteArticle');
+	  addEvent(allBtn);
 	}).catch(function (err) {
 	  console.log('the error happening ' + err);
 	});

@@ -1,0 +1,51 @@
+@import "common";
+
+.articleList{
+  width:998px;
+  margin:30px auto;
+  background-color:#fff;
+  .list{
+    padding:10px 10px 20px 10px;
+    list-style: none;
+    li{
+      height:45px;
+      line-height:45px;
+      border-bottom: solid 1px #3cbaff;
+      padding:10px;
+      span{
+        display: inline-block;
+        width:45px;
+        height:45px;
+        text-align: center;
+        line-height: 45px;
+        background-color:#3cbaff;
+        color:#fff;
+        border-radius: 5px;
+      }
+      a{
+        display: inline-block;
+        margin-left:10px;
+        color:#3cbaff;
+        &:hover{
+          color:#3cbacc;
+        }
+      }
+      input{
+        float: right;
+        margin-right: 20px;
+        margin-top:10px;
+        border:none;
+        width:60px;
+        height:30px;
+        line-height: 30px;
+        color:#fff;
+        background-color:#3cbaff;
+        font-family: "微软雅黑";
+        outline:none;
+        &:active{
+          background-color:#3cbacc;
+        }
+      }
+    }
+  }
+}

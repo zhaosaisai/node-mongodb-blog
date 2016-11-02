@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
+    <title>seeyou404</title>
+    <link rel="stylesheet" href="./css/edit.css" media="screen" title="no title">
+</head>
+<body>
+  <!-- header部分 -->
+  <div id="header">
+    <div class="self">
+      <span class="name">Seeyou404</span>
+      <a href="https://github.com/" title="seeyou404" class="github">Github</a>
+    </div>
+  </div>
+  <!-- 文章的编辑区域 -->
+  <div class="editContainer clearfix">
+    <input class="title" type="text" placeholder="Title" name="title"/>
+    <textarea id="editor" placeholder="Content here ...."></textarea>
+    <p class="button"><input type="button" name="name" value="提交文章" class="submit-article"></p>
+  </div>
+</body>
+<script type="text/javascript" src="./vendor/editor.js"></script>
+<script type="text/javascript" src="./vendor/marked.js"></script>
+<script type="text/javascript">
+  var editor = new Editor();
+  editor.render();
+</script>
+<script type="text/javascript" src="./js/edit.js"></script>
+</html>

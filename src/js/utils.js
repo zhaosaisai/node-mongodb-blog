@@ -30,3 +30,9 @@ export function getId (){
 export function getRanLength(str){
   return str.substring(0, Math.round(Math.random()*100 + 100));
 }
+
+export function parseHTML(str) {
+    let doc = document.implementation.createHTMLDocument(str);
+    doc.body.innerHTML = str;
+    return doc.body.children;
+}

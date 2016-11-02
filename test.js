@@ -26,3 +26,38 @@ db.articles.insert([{
   tags:['javascript','vue'],
   time: (new Date)
 }])
+
+
+db.articles.insert({
+  title:'vue.js教程',
+  content:'这是vue框架的开山教程<h1>这个标题能解析吗</h1><h2>这个标题能解析吗</h2><h3>这个标题能解析吗</h3><h4>这个标题能解析吗</h4><h5>这个标题能解析吗</h5><h6>这个标题能解析吗</h6>',
+  tags:['javascript','vue'],
+  time: (new Date)
+})
+
+db.articles.insert([{
+  title:'vue.js教程',
+  content:'这是vue框架的开山教程<h2>这个标题能解析吗</h2>',
+  tags:['javascript','vue'],
+  time: (new Date)
+},{
+  title:'vue.js教程',
+  content:'这是vue框架的开山教程<h3>这个标题能解析吗</h3>',
+  tags:['javascript','vue'],
+  time: (new Date)
+},{
+  title:'vue.js教程',
+  content:'这是vue框架的开山教程<h4>这个标题能解析吗</h4>',
+  tags:['javascript','vue'],
+  time: (new Date)
+},{
+  title:'vue.js教程',
+  content:'这是vue框架的开山教程<h5>这个标题能解析吗</h5>',
+  tags:['javascript','vue'],
+  time: (new Date)
+},{
+  title:'vue.js教程',
+  content:'这是vue框架的开山教程<h6>这个标题能解析吗</h6>',
+  tags:['javascript','vue'],
+  time: (new Date)
+}])

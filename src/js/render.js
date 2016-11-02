@@ -24,3 +24,15 @@ export function renderArticle(data){
           </div>
           `;
 }
+
+
+export function renderTitle(data){
+  return data.map((obj,index) => {
+    return `<li>
+            <span class="index">${index+1}</span>
+            <a href="/articles.html?id=${obj._id}"  target="_blank">${obj.title}</a>
+            <input type="button" class="deleteArticle" name="name" value="删除" data-index="${obj._id}">
+          </li>
+          `;
+  })
+}

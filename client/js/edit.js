@@ -50,24 +50,29 @@
 
 	var _axios2 = _interopRequireDefault(_axios);
 
-	var _render = __webpack_require__(4);
-
 	var _utils = __webpack_require__(5);
-
-	var util = _interopRequireWildcard(_utils);
-
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	//首先进行首页请求获取到数据
-	_axios2.default.get('/list').then(function (value) {
-	  // console.log(typeof JSON.parse(value.data.listItems));
-	  //获取到数据之后进行数据的渲染
-	  util.$('#content').innerHTML = (0, _render.renderList)(JSON.parse(value.data.listItems)).join('');
-	}).catch(function (err) {
-	  console.log('the error happening ' + err);
-	});
+	//获取需要使用的元素
+	var title = (0, _utils.$)('.title');
+	var icon = (0, _utils.$)('.icon-preview');
+	var btn = (0, _utils.$)('.submit-article');
+
+	btn.addEventListener('click', function () {
+	  icon.click();
+	  var preview = (0, _utils.$)('.editor-preview');
+	  //获取需要传递的信息
+	  _axios2.default.post('/addArticle', {
+	    title: title.value,
+	    content: preview.innerHTML,
+	    time: new Date()
+	  }).then(function (data) {
+	    console.log(data);
+	  }).catch(function (err) {
+	    console.log(err);
+	  });
+	}, false);
 
 /***/ },
 /* 1 */
@@ -1775,38 +1780,7 @@
 	};
 
 /***/ },
-/* 4 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.renderList = renderList;
-	exports.renderArticle = renderArticle;
-	exports.renderTitle = renderTitle;
-
-	var _utils = __webpack_require__(5);
-
-	function renderList(data) {
-	  return data.map(function (obj) {
-	    var content = obj.content.length > 200 ? (0, _utils.getRanLength)(obj.content) : obj.content;
-	    return '<div class="items">\n              <h3 class="item-title"><a href="/articles.html?id=' + obj._id + '" target="_blank">' + obj.title + '</a></h3>\n              <div class="item-content">\n                ' + content + '<span style="display:' + (obj.content.length > 200 ? 'inline' : 'none') + '">......</span>\n              </div>\n              <h6 class="item-time">' + (0, _utils.formatDate)(new Date(obj.time)) + '</h6>\n          </div>\n          ';
-	  });
-	}
-
-	function renderArticle(data) {
-	  return '<h2 class="title">\n            <span>' + data.title + '</span>\n            <span class="time">' + (0, _utils.formatDate)(new Date(data.time)) + '</span>\n          </h2>\n          <div class="content">\n            ' + data.content + '\n          </div>\n          ';
-	}
-
-	function renderTitle(data) {
-	  return data.map(function (obj, index) {
-	    return '<li>\n            <span class="index">' + (index + 1) + '</span>\n            <a href="/articles.html?id=' + obj._id + '"  target="_blank">' + obj.title + '</a>\n            <input type="button" class="deleteArticle" name="name" value="\u5220\u9664" data-index="' + obj._id + '">\n          </li>\n          ';
-	  });
-	}
-
-/***/ },
+/* 4 */,
 /* 5 */
 /***/ function(module, exports) {
 

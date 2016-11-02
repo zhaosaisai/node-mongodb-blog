@@ -10,4 +10,6 @@ axios.get('/article', {
   }
 }).then((value) => {
   $('.articles').innerHTML = renderArticle(JSON.parse(value.data.articlesContents))
+}).then(() => {
+    hljs.initHighlightingOnLoad();
 })

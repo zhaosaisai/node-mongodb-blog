@@ -1,4 +1,5 @@
 @import "common";
+@import "./vendor/theme";
 
 .articles{
   width:998px;
@@ -32,5 +33,36 @@
     line-height: 30px;
     text-indent: 2em;
     font-size:16px;
+    // 文章样式的设置
+    // 标题的设置
+    h1,h2,h3,h4,h5,h6{
+      padding:10px;
+      font-weight:normal;
+      text-indent: 0;
+      background-color: #eee;
+      margin:10px 0;
+      border-left:10px solid #3cbaff;
+    }
+    blockquote,p{
+      padding:0;
+      margin:0;
+    }
+    p{
+      line-height:35px;
+      margin:10px 0px;
+      img{
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+    blockquote{
+      background-color:#F7F7F7;
+      padding:10px;
+      border-left:solid 10px #ccc;
+    }
+    pre{
+      display: block;
+    }
   }
 }
